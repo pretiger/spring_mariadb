@@ -37,7 +37,7 @@ import com.sample.spring.service.board.ExcelService;
 import com.sample.spring.utils.MediaUtils;
 import com.sample.spring.utils.Pager;
 
-//로컬에서 주석 삽입
+//로컬에서 주석 삽입(수정)
 @Controller
 @RequestMapping("/board/*")
 public class BoardController {
