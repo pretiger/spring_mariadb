@@ -38,7 +38,7 @@ import com.sample.spring.utils.MediaUtils;
 import com.sample.spring.utils.Pager;
 
 //로컬에서 주석 삽입
-//2번째 주석 추가
+
 @Controller
 @RequestMapping("/board/*")
 public class BoardController {
