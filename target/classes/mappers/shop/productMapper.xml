@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sample.spring.mapper.ProductMapper">
+	<delete id="deleteProduct">
+		delete from product where product_id=#{product_id}
+	</delete>
+	<select id="chkPicture_url" resultType="String">
+		select picture_url from product where product_id=#{product_id}
+	</select>
+	<update id="updateProduct">
+		update product set product_name=#{product_name}, description=#{description}, 
+			price=#{price}, picture_url=#{picture_url}
+		where product_id=#{product_id}
+	</update>
+	<insert id="insertProduct">
+		<selectKey keyProperty="product_id" order="BEFORE" resultType="int">
+			select ifnull(max(product_id)+1, 1) from product
+		</selectKey>
+		insert into product (product_id,product_name,description,price,picture_url) values
+		( #{product_id}, #{product_name}, #{description}, #{price}, #{picture_url} )
+	</insert>
+	<update id="updateCart">
+		update cart set amount=#{amount} where cart_id=#{cart_id}
+	</update>
+	<delete id="deleteAllCart">
+		delete from cart where userid=#{userid}
+	</delete>
+	<delete id="deleteCart">
+		delete from cart where cart_id=#{cart_id}
+	</delete>
+	<select id="sum" resultType="int">
+		select ifnull(sum(amount*price), 0) 
+		from product p, cart c
+		where p.product_id=c.product_id and c.userid=#{userid} 
+	</select>
+	<select id="listCart" resultType="com.sample.spring.domain.shop.Cart">
+		select cart_id,c.product_id,product_name,price,amount,userid,price*amount money
+		from cart c, product p 
+		where userid=#{userid} and c.product_id=p.product_id
+	</select>
+	<insert id="insert">
+		insert into cart (cart_id, userid, product_id, amount) 
+		select ifnull(max(cart_id)+1,1),#{userid}, #{product_id}, #{amount} from cart
+	</insert>
+	<select id="view" resultType="com.sample.spring.domain.shop.Product">
+		select * from product where product_id=#{product_id}
+	</select>
+	<select id="list" resultType="com.sample.spring.domain.shop.Product">
+		select * from product order by product_id
+	</select>
+</mapper>
