@@ -36,8 +36,8 @@ import com.sample.spring.service.board.BoardService;
 import com.sample.spring.service.board.ExcelService;
 import com.sample.spring.utils.MediaUtils;
 import com.sample.spring.utils.Pager;
-// local comments insert
-//2 update
+
+
 @Controller
 @RequestMapping("/board/*")
 public class BoardController {
