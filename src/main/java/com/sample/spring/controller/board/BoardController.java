@@ -186,7 +186,7 @@ public class BoardController {
 		int count=boardService.count(searchkey, keyword);
 		Pager pager=new Pager(count, currentPage);
 		int start=pager.getPageStart()-1;
-		int end=pager.getPageScale();
+		int end=Pager.getPageScale();
 		logger.info("=======start:"+start+"========end:"+end);
 		model.addAttribute("list", boardService.list(start, end, searchkey, keyword));
 		model.addAttribute("searchkey", searchkey);
