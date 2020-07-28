@@ -95,7 +95,7 @@ function attachList(){
 	});
 }
 function originalName(filename){
-	return filename.substr(filename.indexOf("_")+1);
+	return filename.substr(filename.lastIndexOf("_")+1);
 }
 function addtag(){
 	str="<div><a href='#'>[Delete]</a><input type='file' name='files'></div>";

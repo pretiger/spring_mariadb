@@ -132,7 +132,7 @@ public class BoardController {
 		HttpHeaders httpHeaders=new HttpHeaders();
 		try {
 			inputStream=new FileInputStream(uploadPath+filename);
-			filename=filename.substring(filename.indexOf("_")+1);
+			filename=filename.substring(filename.lastIndexOf("_")+1);
 			filename=new String(filename.getBytes("utf-8"), "8859_1");
 			httpHeaders.setContentType(MediaType.APPLICATION_OCTET_STREAM);
 			httpHeaders.add("Content-Disposition", "attachment;filename=\""+filename+"\"");
